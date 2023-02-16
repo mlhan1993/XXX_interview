@@ -60,8 +60,12 @@ func (m *Processor) Sum(matrix Matrix) (int, error) {
 }
 
 // Multiply gives the product of the integers in the matrix
+// return 0 if matrix is empty
 func (m *Processor) Multiply(matrix Matrix) (int, error) {
 	total := 1
+	if len(matrix) == 0 {
+		return 0, nil
+	}
 	for _, row := range matrix {
 		for _, col := range row {
 			tmp := total

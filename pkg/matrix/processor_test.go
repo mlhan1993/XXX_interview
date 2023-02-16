@@ -53,6 +53,16 @@ func TestHelper_Sum(t *testing.T) {
 	_, err = helper.Sum(m)
 	assert.IsTypef(t, IntOverflowError{}, err, "expcted IntOverflowError not found")
 
+	m = Matrix{{1}}
+	total, err = helper.Sum(m)
+	expectedResult = 1
+	assert.Equal(t, total, expectedResult)
+
+	m = Matrix{{}}
+	total, err = helper.Sum(m)
+	expectedResult = 0
+	assert.Equal(t, total, expectedResult)
+
 }
 
 func TestHelper_Multiply(t *testing.T) {
@@ -70,4 +80,15 @@ func TestHelper_Multiply(t *testing.T) {
 	_, err = helper.Multiply(m)
 	assert.IsTypef(t, IntOverflowError{}, err, "expcted IntOverflowError not found")
 
+	m = Matrix{{1, 0}, {4, 5}}
+	total, err = helper.Multiply(m)
+	expectedResult = 0
+	assert.Nil(t, err)
+	assert.Equal(t, total, expectedResult)
+
+	m = Matrix{}
+	total, err = helper.Multiply(m)
+	expectedResult = 0
+	assert.Nil(t, err)
+	assert.Equal(t, total, expectedResult)
 }

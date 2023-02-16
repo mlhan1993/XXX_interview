@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/mlhan1993/league_interview/api"
 	"github.com/mlhan1993/league_interview/pkg/matrix"
 	"net/http"
@@ -12,6 +13,7 @@ import (
 //		curl -F 'file=@/path/matrix.csv' "localhost:8080/echo"
 
 func main() {
+	fmt.Println("service started at port 8080")
 	processor := matrix.Processor{}
 	handlers := api.NewMatrixHandlers(&processor)
 	http.HandleFunc("/echo", handlers.Echo)
